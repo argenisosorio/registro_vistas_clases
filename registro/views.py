@@ -7,10 +7,12 @@ from registro.models import Persona
 
 class Consultar(ListView):
     model = Persona
+    template_name = 'consultar.html'
 
 class Registrar(CreateView):
     model = Persona
     fields = ['nombre', 'cedula']
+    template_name = 'registro/registrar.html'
     success_url = reverse_lazy('registro:consultar')
 
 class Editar(UpdateView):
@@ -20,4 +22,5 @@ class Editar(UpdateView):
 
 class Borrar(DeleteView):
     model = Persona
+    template_name = 'registro/borrar.html'
     success_url = reverse_lazy('registro:consultar')
