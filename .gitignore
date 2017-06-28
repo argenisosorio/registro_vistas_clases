@@ -5,3 +5,4 @@
 *.log
 *.swp
 db.sqlite3
+registro/migrations
