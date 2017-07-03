@@ -64,12 +64,10 @@
       <div class="well">
       {% if messages %}
         {% for message in messages %}
-          <div class="alert alert-success alert-dismissable">
-            <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
-              <strong>
-                {% if message.tags %}{% endif %}
-                {{ message }}
-              </strong>
+          <div class="alert alert-{{ message.tags }} alert-dismissable">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>              
+            {% if message.tags %}{% endif %}
+            {{ message }}
           </div>
         {% endfor %}
       {% endif %}
