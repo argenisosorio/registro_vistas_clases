@@ -36,3 +36,9 @@ $ python manage.py createsuperuser
 $ python manage.py migrate
 
 $ python manage.py runserver
+
+## Rama messages
+
+El proyecto contiene una rama messages que muestra
+como se envian mensajes usando los métodos de las clases
+genéricas de Django.
