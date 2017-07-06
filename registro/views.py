@@ -43,7 +43,7 @@ class Registrar(CreateView):
 
     def form_valid(self, form):
         """
-        Método que muestra cual usuario y cuando registro a una persona
+        Método que muestra cual usuario y cuando registro a una persona y lo guara en la tabla bitacora
         """
         self.object = form.save()
         #print "***** El usuario: "+str(self.request.user)+", registro una persona el: "+str(datetime.now())+" *****"
@@ -62,7 +62,7 @@ class Editar(UpdateView):
 
     def form_valid(self, form):
         """
-        Método que muestra cual usuario y cuando actualizo a una persona
+        Método que muestra cual usuario y cuando actualizo a una persona y lo guara en la tabla bitacora
         """
         self.object = form.save()
         #print "***** El usuario: "+str(self.request.user)+", actualizo una persona el: "+str(datetime.now())+" *****"
@@ -80,7 +80,7 @@ class Borrar(DeleteView):
 
     def delete(self, request, *args, **kwargs):
         """
-        Método que muestra cual usuario y cuando elimino a una persona
+        Método que muestra cual usuario y cuando elimino a una persona y lo guara en la tabla bitacora
         """
         #print "***** El usuario: "+str(self.request.user)+", elimino a una persona el: "+str(datetime.now())+" *****"
         a = "El usuario: "+str(self.request.user)+", elimino una persona el: "+str(datetime.now())
