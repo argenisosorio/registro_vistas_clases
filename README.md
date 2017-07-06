@@ -48,5 +48,5 @@ genéricas de Django.
 El proyecto contiene una rama bitacora que muestra
 como podemos crear un modelo para guardar logs
 de las acciones ejecutadas por un usuario
-y mostrarlas desde el admin de Django.
+y mostrarlas en una plantilla.
 
