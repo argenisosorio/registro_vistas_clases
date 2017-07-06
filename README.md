@@ -42,3 +42,11 @@ $ python manage.py runserver
 El proyecto contiene una rama messages que muestra
 como se envian mensajes usando los métodos de las clases
 genéricas de Django.
+
+## Rama bitacora
+
+El proyecto contiene una rama bitacora que muestra
+como podemos crear un modelo para guardar logs
+de las acciones ejecutadas por un usuario
+y mostrarlas desde el admin de Django.
+
