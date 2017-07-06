@@ -8,4 +8,6 @@ urlpatterns = patterns('',
     url(r'^registrar$', views.Registrar.as_view(), name='registrar'),
     url(r'^editar/(?P<pk>\d+)$', views.Editar.as_view(), name='editar'),
     url(r'^borrar/(?P<pk>\d+)$', views.Borrar.as_view(), name='borrar'),
+    url(r'^index$', views.index, name='index'),
+    
 )

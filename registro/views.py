@@ -1,10 +1,19 @@
 # -*- coding: utf-8 -*-
 from django.http import HttpResponse
+from django.shortcuts import render, redirect, get_object_or_404, render_to_response
+from django.template import RequestContext
 from django.views.generic import TemplateView,ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.core.urlresolvers import reverse_lazy
 from registro.models import Persona
 from datetime import datetime
+from django.contrib.admin.models import LogEntry, ADDITION, CHANGE, DELETION
+from django.contrib.auth.models import User
+
+
+def index(request):
+    print "***** El usuario: "+str(request.user)+", visito el index: "+str(datetime.now())+" *****"
+    return render_to_response('registro/index.html', context_instance=RequestContext(request))
 
 
 class Consultar(ListView):
@@ -23,7 +32,7 @@ class Consultar(ListView):
             raise Http404(_(u"Empty list and '%(class_name)s.allow_empty' is False.")
                           % {'class_name': self.__class__.__name__})
         context = self.get_context_data(object_list=self.object_list)
-        print "***** El usuario: "+str(request.user)+", visito la lista de personas el: "+str(datetime.now())+" *****"
+        #print "***** El usuario: "+str(request.user)+", visito la lista de personas el: "+str(datetime.now())+" *****"
         return self.render_to_response(context)
 
 
