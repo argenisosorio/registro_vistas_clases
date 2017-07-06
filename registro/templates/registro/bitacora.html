@@ -1,0 +1,11 @@
+{% extends "registro/base.html" %}
+{% block titulo %}Bitacora{% endblock %}
+{% block cuerpo %}
+<h1>Bitácora</h1>
+<ul>
+  {% for x in object_list %}
+  <li>{{ x.id }} {{ x.entrada }}
+  </li>
+  {% endfor %}
+</ul>
+{% endblock %}

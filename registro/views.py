@@ -86,3 +86,11 @@ class Borrar(DeleteView):
         a = "El usuario: "+str(self.request.user)+", elimino una persona el: "+str(datetime.now())
         Bitacora.objects.create(entrada=a)
         return super(Borrar, self).delete(self, request, *args, **kwargs)
+
+
+class BitacoraView(ListView):
+    """
+    Clase que muestra la lista de entradas de la bitácora
+    """
+    model = Bitacora
+    template_name = "registro/bitacora.html"
