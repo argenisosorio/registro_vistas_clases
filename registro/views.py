@@ -5,15 +5,10 @@ from django.template import RequestContext
 from django.views.generic import TemplateView,ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.core.urlresolvers import reverse_lazy
-from registro.models import Persona
 from datetime import datetime
 from django.contrib.admin.models import LogEntry, ADDITION, CHANGE, DELETION
 from django.contrib.auth.models import User
-
-
-def index(request):
-    print "***** El usuario: "+str(request.user)+", visito el index: "+str(datetime.now())+" *****"
-    return render_to_response('registro/index.html', context_instance=RequestContext(request))
+from registro.models import Persona, Bitacora
 
 
 class Consultar(ListView):
@@ -32,7 +27,9 @@ class Consultar(ListView):
             raise Http404(_(u"Empty list and '%(class_name)s.allow_empty' is False.")
                           % {'class_name': self.__class__.__name__})
         context = self.get_context_data(object_list=self.object_list)
-        #print "***** El usuario: "+str(request.user)+", visito la lista de personas el: "+str(datetime.now())+" *****"
+        #print "***** El usuario: "+str(self.request.user)+", visito la lista de personas el: "+str(datetime.now())+" *****"
+        #a = "El usuario: "+str(self.request.user)+", visito la lista de personas el: "+str(datetime.now())
+        #Bitacora.objects.create(entrada=a)
         return self.render_to_response(context)
 
 
@@ -49,7 +46,9 @@ class Registrar(CreateView):
         Método que muestra cual usuario y cuando registro a una persona
         """
         self.object = form.save()
-        print "***** El usuario: "+str(self.request.user)+", registro una persona el: "+str(datetime.now())+" *****"
+        #print "***** El usuario: "+str(self.request.user)+", registro una persona el: "+str(datetime.now())+" *****"
+        a = "El usuario: "+str(self.request.user)+", registro una persona el: "+str(datetime.now())
+        Bitacora.objects.create(entrada=a)
         return super(Registrar, self).form_valid(form)
 
 
@@ -66,7 +65,9 @@ class Editar(UpdateView):
         Método que muestra cual usuario y cuando actualizo a una persona
         """
         self.object = form.save()
-        print "***** El usuario: "+str(self.request.user)+", actualizo una persona el: "+str(datetime.now())+" *****"
+        #print "***** El usuario: "+str(self.request.user)+", actualizo una persona el: "+str(datetime.now())+" *****"
+        a = "El usuario: "+str(self.request.user)+", actualizó una persona el: "+str(datetime.now())
+        Bitacora.objects.create(entrada=a)
         return super(Editar, self).form_valid(form)
 
 
@@ -81,5 +82,7 @@ class Borrar(DeleteView):
         """
         Método que muestra cual usuario y cuando elimino a una persona
         """
-        print "***** El usuario: "+str(self.request.user)+", elimino a una persona el: "+str(datetime.now())+" *****"
+        #print "***** El usuario: "+str(self.request.user)+", elimino a una persona el: "+str(datetime.now())+" *****"
+        a = "El usuario: "+str(self.request.user)+", elimino una persona el: "+str(datetime.now())
+        Bitacora.objects.create(entrada=a)
         return super(Borrar, self).delete(self, request, *args, **kwargs)

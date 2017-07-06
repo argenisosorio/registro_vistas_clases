@@ -12,3 +12,10 @@ class Persona(models.Model):
 
     def get_absolute_url(self):
         return reverse('registro:editar', kwargs={'pk': self.pk})
+
+
+class Bitacora(models.Model):
+    entrada = models.CharField(max_length=200)
+
+    def __unicode__(self):
+        return self.entrada
