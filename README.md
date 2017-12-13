@@ -50,3 +50,8 @@ como podemos crear un modelo para guardar logs
 de las acciones ejecutadas por un usuario
 y mostrarlas en una plantilla.
 
+## Rama upload
+
+En la rama upload hay un ejemplo
+de como subir archivos al servidor usando
+un formulario.
