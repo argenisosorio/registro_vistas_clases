@@ -1,0 +1,12 @@
+{% extends "registro/base.html" %}
+{% block titulo %}File{% endblock %}
+{% block cuerpo %}
+<form method="post" enctype="multipart/form-data">{% csrf_token %}
+  <input type="file" name="myfile">
+  <br />
+  <button type="submit">Upload</button>
+</form>
+{% if file %}
+  <p>File uploaded at: <a href="{{ file }}">{{ file }}</a></p>
+{% endif %}
+{% endblock %}
