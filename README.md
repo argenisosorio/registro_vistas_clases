@@ -55,3 +55,12 @@ y mostrarlas en una plantilla.
 En la rama upload hay un ejemplo
 de como subir archivos al servidor usando
 un formulario.
+
+## Rama upload_model
+
+En esta rama encontraremos un ejemplo
+de como subir ficheros al servidor usando
+los modelos y formularios de django, e
+instanciaremos los ficheros subidos con un objeto en
+la base de datos.
+
