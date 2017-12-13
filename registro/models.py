@@ -3,6 +3,12 @@ from django.db import models
 from django.core.urlresolvers import reverse
 
 
+class Document(models.Model):
+    description = models.CharField(max_length=255, blank=True)
+    document = models.FileField(upload_to='')
+    uploaded_at = models.DateTimeField(auto_now_add=True)
+
+
 class Persona(models.Model):
     nombre = models.CharField(max_length=200)
     cedula = models.CharField(max_length=8)
