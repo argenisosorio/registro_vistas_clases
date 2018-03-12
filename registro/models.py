@@ -8,13 +8,5 @@ class Document(models.Model):
     document = models.FileField(upload_to='')
     uploaded_at = models.DateTimeField(auto_now_add=True)
 
-
-class Persona(models.Model):
-    nombre = models.CharField(max_length=200)
-    cedula = models.CharField(max_length=8)
-
     def __unicode__(self):
-        return self.nombre
-
-    def get_absolute_url(self):
-        return reverse('registro:editar', kwargs={'pk': self.pk})
+        return self.description

@@ -1,0 +1,12 @@
+{% extends "registro/base.html" %}
+{% block titulo %}List of Files{% endblock %}
+{% block cuerpo %}
+<h1>Lista de documentos</h1>
+<ul>
+  {% for x in object_list %}
+  <li>
+    {{ x.description}} | <a href="media/{{ x.document}}">{{ x.document}}</a> | {{ x.uploaded_at}}
+  </li>
+  {% endfor %}
+</ul>
+{% endblock %}
