@@ -10,14 +10,20 @@ from django.core.files.storage import FileSystemStorage
 
 
 def file(request):
+    """
+    Función que permite guardar los archivos subidos en el servidor.
+    """
     if request.method == 'POST' and request.FILES['myfile']:
         myfile = request.FILES['myfile']
         fs = FileSystemStorage()
         filename = fs.save(myfile.name, myfile)
-        uploaded_file_url = fs.url(filename)
+        # Ruta donde está almacenado el archivo
+        file = fs.url(filename)
         return render(request, 'registro/file.html', {
-            'uploaded_file_url': uploaded_file_url
+            'file': file
         })
+    # Definimos en el settings la carpeta donde se van a guardar los documentos adjuntos.
+    # El archivo será guardado en la carpeta "media" en la raíz del proyecto.
     return render(request, 'registro/file.html')
 
 
