@@ -2,7 +2,17 @@
 {% block titulo %}File{% endblock %}
 {% block cuerpo %}
 <form method="post" enctype="multipart/form-data">{% csrf_token %}
-  {{ form.as_p }}
+
+  <label>{{ form.document.label }}:</label>
+  {{ form.document }}
+
+  <hr />
+
+  <label>{{ form.description.label }}:</label>
+  {{ form.description }}
+
+  <hr />
+
   <button type="submit">Upload</button>
 </form>
 {% endblock %}
