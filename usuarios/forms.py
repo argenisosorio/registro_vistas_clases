@@ -31,42 +31,40 @@ class LoginForm(AuthenticationForm):
 
 
 class RegisterForm(UserCreationForm):
+    """
+    Clase del formulario que registra los usuarios
+    """
+
+    username = forms.CharField(max_length=30, label=("Usuario"), widget=forms.TextInput(attrs={
+        'class': 'form-control',
+        'style': 'min-width: 0; width: 25%; display: inline;',
+    }))
+
+    first_name = forms.CharField(label=("Nombres"), widget=forms.TextInput(attrs={
+        'class': 'form-control',
+        'style': 'min-width: 0; width: 25%; display: inline;',
+    }))
+    
+    last_name = forms.CharField(label=("Apellidos"), widget=forms.TextInput(attrs={
+        'class': 'form-control',
+        'style': 'min-width: 0; width: 25%; display: inline;',
+    }))
+
+    email = forms.CharField(label=("Email"), widget=forms.TextInput(attrs={
+        'class': 'form-control',
+        'style': 'min-width: 0; width: 25%; display: inline;',
+    }))
+
+    password1 = forms.CharField(label=("Contraseña"), widget=forms.PasswordInput(attrs={
+        'class': 'form-control',
+        'style': 'min-width: 0; width: 25%; display: inline;',
+    }))
+
+    password2 = forms.CharField(label=("Contraseña (confirmación)"), widget=forms.PasswordInput(attrs={
+        'class': 'form-control',
+        'style': 'min-width: 0; width: 25%; display: inline;',
+    }))
 
     class Meta:
         model = User
-
-        fields = [
-            'username',
-            'first_name',
-            'last_name',
-            'email',
-            'password1',
-            'password2',
-        ]
-
-        widgets = {
-            'username': forms.TextInput(attrs={
-                'class':'form-control input-md',
-                'style': 'min-width: 0; width: 50%; display: inline;',
-            }),
-            'first_name': forms.TextInput(attrs={
-                'class':'form-control input-md',
-                'style': 'min-width: 0; width: 50%; display: inline;',
-            }),
-            'last_name': forms.TextInput(attrs={
-                'class':'form-control input-md',
-                'style': 'min-width: 0; width: 50%; display: inline;',
-            }),
-            'email': forms.TextInput(attrs={
-                'class':'form-control input-md',
-                'style': 'min-width: 0; width: 50%; display: inline;',
-            }),
-            'password1': forms.TextInput(attrs={
-                'class':'form-control input-md',
-                'style': 'min-width: 0; width: 50%; display: inline;',
-            }),
-            'password2': forms.TextInput(attrs={
-                'class':'form-control input-md',
-                'style': 'min-width: 0; width: 50%; display: inline;',
-            }),
-        }
+        fields = ('first_name', 'last_name',  'email', 'username', 'password1', 'password2')
