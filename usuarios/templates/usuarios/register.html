@@ -1,0 +1,48 @@
+{% extends "registro/base.html" %}
+{% block titulo %}Register{% endblock %}
+{% block cuerpo %}
+<h1>Register Here!</h1>
+<form action="{% url 'usuarios:register' %}" method="post">{% csrf_token %}
+    <label>Username</label>
+    <br />
+    {{ form.username }}
+    <br />
+    <br />
+    <label>First name</label>
+    <br />
+    {{ form.first_name }}
+    <br />
+    <br />
+    <label>Last name</label>
+    <br />
+    {{ form.last_name }}
+    <br />
+    <br />
+    <label>Email</label>
+    <br />
+    {{ form.email }}
+    <br />
+    <br />
+    <label>Password</label>
+    <br />
+    {{ form.password1 }}
+    {% if form.password1.errors %}
+        <br />
+        <b>Alert: </b>{{ form.password1.errors}}
+    {% endif %}
+    <br />
+    <br />
+    <label>Confirm password</label>
+    <br />
+    {{ form.password2 }}
+    {% if form.password2.errors %}
+        <br />
+        <b>Alert: </b>{{ form.password2.errors}}
+    {% endif %}
+    <br />
+    <br />
+    <button class="btn btn-success" type="submit">Registrar cuenta</button>
+</form>
+<br />
+<h4>¿Ya tienes cuenta de usuario?</h4> <a href="{% url 'usuarios:login' %}"><button class="btn btn-primary" type="submit">Iniciar sesión</button></a>
+{% endblock %}
