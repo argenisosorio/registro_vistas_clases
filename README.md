@@ -68,4 +68,3 @@ En esta rama encontraremos un ejemplo
 de autenticación de usuarios, cierre de
 sesión y creación de cuentas de usuarios
 del sistema.
-
