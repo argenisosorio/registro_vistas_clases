@@ -71,6 +71,12 @@ class RegisterForm(UserCreationForm):
         'required': 'true',
     }), required = True)
 
+    cedula = forms.CharField(label=("Cédula"), widget=forms.TextInput(attrs={
+        'class': 'form-control',
+        'style': 'min-width: 0; width: 25%; display: inline;',
+        'required': 'true',
+    }), required = True)
+
     class Meta:
         model = User
-        fields = ('first_name', 'last_name',  'email', 'username', 'password1', 'password2')
+        fields = ('first_name', 'last_name',  'email', 'username', 'password1', 'password2', 'cedula')
