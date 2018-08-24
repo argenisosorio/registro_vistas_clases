@@ -56,7 +56,13 @@ class RegisterUser(CreateView):
         Método gestiona la validación de los datos enviados en el
         formulario y envía un mensaje de confirmación.
         """
-        self.object = form.save()
+        self.object = form.save(commit=False)
+        self.object.username = form.cleaned_data['username']
+        self.object.first_name = form.cleaned_data['first_name']
+        self.object.last_name = form.cleaned_data['last_name']
+        self.object.email = form.cleaned_data['email']
+        self.object.is_active = 1
+        self.object.save()
         messages.success(self.request, self.success_message)
         return super(RegisterUser, self).form_valid(form)
 
