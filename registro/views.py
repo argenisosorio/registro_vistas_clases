@@ -4,6 +4,7 @@ from django.views.generic import TemplateView,ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.core.urlresolvers import reverse_lazy
 from registro.models import Persona
+from registro.forms import PersonaForm
 
 
 class Consultar(ListView):
@@ -12,13 +13,13 @@ class Consultar(ListView):
 
 class Registrar(CreateView):
     model = Persona
-    fields = ['nombre', 'cedula']
+    form_class = PersonaForm
     success_url = reverse_lazy('registro:consultar')
 
 
 class Editar(UpdateView):
     model = Persona
-    fields = ['nombre', 'cedula']
+    form_class = PersonaForm
     success_url = reverse_lazy('registro:consultar')
 
 
