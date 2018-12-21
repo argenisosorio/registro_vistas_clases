@@ -50,6 +50,27 @@ class Editar(UpdateView):
     template_name = "registro/persona_form_update.html"
     success_url = reverse_lazy('registro:consultar')
 
+    def get_context_data(self, **kwargs):
+        """
+        Método que permite pasarle la lista de Estados, Municipios y Parroquias
+        registrados.
+        """
+        consulta_estados = Estado.objects.all()
+        consulta_municipios = Municipio.objects.all()
+        consulta_parroquias = Parroquia.objects.all()
+        context = {
+            'estados' : consulta_estados,
+            'municipios' : consulta_municipios,
+            'parroquias' : consulta_parroquias
+        }
+        if self.object:
+            context['object'] = self.object
+            context_object_name = self.get_context_object_name(self.object)
+            if context_object_name:
+                context[context_object_name] = self.object
+        context.update(kwargs)
+        return super(Editar, self).get_context_data(**context)
+
 
 class Borrar(DeleteView):
     """
