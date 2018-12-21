@@ -72,5 +72,5 @@ del sistema.
 ## Rama selects
 
 En esta rama encontraremos un ejemplo
-de formularios que se cargan de datos
-dependiente de otros formularios.
+de campos de selección de formularios que se cargan de datos
+dependiente de otros campos.
