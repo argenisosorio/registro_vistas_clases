@@ -63,11 +63,6 @@ class RegisterUser(CreateView):
         self.object.email = form.cleaned_data['email']
         self.object.is_active = 1
         self.object.save()
-        # En esta sección guardamos los datos del campo cédula del modelo Perfil.
-        perfil = Perfil()
-        perfil.cedula = form.cleaned_data['cedula']
-        perfil.user = self.object
-        perfil.save()
         messages.success(self.request, self.success_message)
         return super(RegisterUser, self).form_valid(form)
 
