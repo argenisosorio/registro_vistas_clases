@@ -4,8 +4,6 @@
 <h1>Crear cuenta</h1>
 <form action="{% url 'usuarios:register' %}" method="post">{% csrf_token %}
   {{ form.as_p }}
-  <br />
-  <br />
   <button class="btn btn-success" type="submit">Registrar cuenta</button>
 </form>
 <br />

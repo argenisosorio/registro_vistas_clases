@@ -69,24 +69,6 @@ class RegisterUser(CreateView):
         return super(RegisterUser, self).form_valid(form)
 
 
-def RegisterUser2(request):
-    '''
-    Función que permite crear usuarios, si la cuenta se creo con éxito
-    se redirige a otro template.
-    '''
-    usuario = request.user
-    if request.method == 'POST':
-        form = MyRegistrationForm(request.POST)
-        if form.is_valid():
-            nuevo_usuario = form.save()
-            return HttpResponseRedirect('login')
-        else:
-            return HttpResponseRedirect('login')
-    args = {}
-    args['form'] = MyRegistrationForm()
-    return render(request, 'usuarios/register.html', args)
-
-
 class Logout(View):
     """
     Clase que gestiona el cierre de sesión.
