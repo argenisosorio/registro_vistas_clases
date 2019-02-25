@@ -67,12 +67,12 @@ class MyRegistrationForm(UserCreationForm):
     is_active = forms.BooleanField(label='¿Estará activo?',widget=CheckboxInput(attrs={
         #'class':'form-control input-md',
         #'style': 'min-width: 0; width: 25%; display: inline;',
-    }), required = True)
+    }), required = False)
 
     is_staff = forms.BooleanField(label='¿Es staff?',widget=CheckboxInput(attrs={
         #'class':'form-control input-md',
         #'style': 'min-width: 0; width: 25%; display: inline;',
-    }), required = True)
+    }), required = False)
 
     class Meta:
         model = User
