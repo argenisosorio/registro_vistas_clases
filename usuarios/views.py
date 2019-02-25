@@ -80,3 +80,11 @@ class Logout(View):
         """
         logout(request)
         return redirect('usuarios:login')
+
+
+class ListUsers(ListView):
+    """
+    Clase que permite consultar la lista de usuarios.
+    """
+    model = User
+    template_name = "usuarios/list_users.html"
