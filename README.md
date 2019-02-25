@@ -62,3 +62,15 @@ los modelos y formularios de django, e
 instanciaremos los ficheros subidos con un objeto en
 la base de datos.
 
+## Rama auth
+
+En esta rama encontraremos un ejemplo
+de autenticación de usuarios, cierre de
+sesión y creación de cuentas de usuarios
+del sistema.
+
+## Rama selects
+
+En esta rama encontraremos un ejemplo
+de campos de selección de formularios que se cargan de datos
+dependiente de otros campos.
