@@ -67,10 +67,16 @@ la base de datos.
 En esta rama encontraremos un ejemplo
 de autenticación de usuarios, cierre de
 sesión y creación de cuentas de usuarios
-del sistema.
+del sistema con modelo perfil asociado.
 
 ## Rama selects
 
 En esta rama encontraremos un ejemplo
 de campos de selección de formularios que se cargan de datos
 dependiente de otros campos.
+
+## Rama create_acount
+
+En esta rama encontraremos un ejemplo
+de creación de cuentas de usuarios
+del sistema.
