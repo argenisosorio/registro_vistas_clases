@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from django import forms
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, UserManager, Permission
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.forms import AuthenticationForm
 from django.forms import (
@@ -30,47 +30,11 @@ class LoginForm(AuthenticationForm):
     ]
 
 
-class RegisterForm(UserCreationForm):
+class MyRegistrationForm(UserCreationForm):
     """
-    Clase del formulario que registra los usuarios
+    #Clase del formulario que registra los usuarios
     """
-
-    username = forms.CharField(max_length=30, label=("Usuario"), widget=forms.TextInput(attrs={
-        'class': 'form-control',
-        'style': 'min-width: 0; width: 25%; display: inline;',
-        'required': 'true',
-    }), required = True)
-
-    first_name = forms.CharField(label=("Nombres"), widget=forms.TextInput(attrs={
-        'class': 'form-control',
-        'style': 'min-width: 0; width: 25%; display: inline;',
-        'required': 'true',
-    }), required = True)
-    
-    last_name = forms.CharField(label=("Apellidos"), widget=forms.TextInput(attrs={
-        'class': 'form-control',
-        'style': 'min-width: 0; width: 25%; display: inline;',
-        'required': 'true',
-    }), required = True)
-
-    email = forms.CharField(label=("Email"), widget=forms.TextInput(attrs={
-        'class': 'form-control',
-        'style': 'min-width: 0; width: 25%; display: inline;',
-        'required': 'true',
-    }), required = True)
-
-    password1 = forms.CharField(label=("Contraseña"), widget=forms.PasswordInput(attrs={
-        'class': 'form-control',
-        'style': 'min-width: 0; width: 25%; display: inline;',
-        'required': 'true',
-    }), required = True)
-
-    password2 = forms.CharField(label=("Contraseña (confirmación)"), widget=forms.PasswordInput(attrs={
-        'class': 'form-control',
-        'style': 'min-width: 0; width: 25%; display: inline;',
-        'required': 'true',
-    }), required = True)
-
+    username = forms.CharField(required = True)
     class Meta:
         model = User
-        fields = ('first_name', 'last_name',  'email', 'username', 'password1', 'password2')
+        fields = ('username','password1','password2','first_name','last_name','email','is_staff','is_active')

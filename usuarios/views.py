@@ -12,7 +12,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import forms, login, logout, authenticate
 from django.views.generic import View
 from django.contrib.auth.models import User
-from .forms import LoginForm, RegisterForm
+from .forms import LoginForm, MyRegistrationForm
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib import messages
 
@@ -43,11 +43,11 @@ class LoginView(FormView):
 
 class RegisterUser(CreateView):
     """
-    Clase que gestiona el formulario registro de usuarios.
+    #Clase que gestiona el formulario registro de usuarios.
     """
     model = User
     template_name = "usuarios/register.html"
-    form_class = RegisterForm
+    form_class = MyRegistrationForm
     success_url = reverse_lazy('registro:consultar')
     success_message = "Se registró con éxito"
 
@@ -60,11 +60,31 @@ class RegisterUser(CreateView):
         self.object.username = form.cleaned_data['username']
         self.object.first_name = form.cleaned_data['first_name']
         self.object.last_name = form.cleaned_data['last_name']
-        self.object.email = form.cleaned_data['email']
-        self.object.is_active = 1
+        self.object.password1 = form.cleaned_data['password1']
+        self.object.password2 = form.cleaned_data['password2']
+        self.object.is_staff = form.cleaned_data['is_staff']
+        self.object.is_active = form.cleaned_data['is_active']
         self.object.save()
         messages.success(self.request, self.success_message)
         return super(RegisterUser, self).form_valid(form)
+
+
+def RegisterUser2(request):
+    '''
+    Función que permite crear usuarios, si la cuenta se creo con éxito
+    se redirige a otro template.
+    '''
+    usuario = request.user
+    if request.method == 'POST':
+        form = MyRegistrationForm(request.POST)
+        if form.is_valid():
+            nuevo_usuario = form.save()
+            return HttpResponseRedirect('login')
+        else:
+            return HttpResponseRedirect('login')
+    args = {}
+    args['form'] = MyRegistrationForm()
+    return render(request, 'usuarios/register.html', args)
 
 
 class Logout(View):

@@ -3,42 +3,7 @@
 {% block cuerpo %}
 <h1>Crear cuenta</h1>
 <form action="{% url 'usuarios:register' %}" method="post">{% csrf_token %}
-  <label>{{ form.username.label }}</label>
-  <br />
-  {{ form.username }}
-  <br />
-  <br />
-  <label>{{ form.first_name.label }}</label>
-  <br />
-  {{ form.first_name }}
-  <br />
-  <br />
-  <label>{{ form.last_name.label }}</label>
-  <br />
-  {{ form.last_name }}
-  <br />
-  <br />
-  <label>{{ form.email.label }}</label>
-  <br />
-  {{ form.email }}
-  <br />
-  <br />
-  <label>{{ form.password1.label }}</label>
-  <br />
-  {{ form.password1 }}
-  {% if form.password1.errors %}
-    <br />
-    <b>Alert: </b>{{ form.password1.errors}}
-  {% endif %}
-  <br />
-  <br />
-  <label>{{ form.password2.label }}</label>
-  <br />
-  {{ form.password2 }}
-  {% if form.password2.errors %}
-    <br />
-    <b>Alert: </b>{{ form.password2.errors}}
-  {% endif %}
+  {{ form.as_p }}
   <br />
   <br />
   <button class="btn btn-success" type="submit">Registrar cuenta</button>
