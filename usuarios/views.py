@@ -12,7 +12,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import forms, login, logout, authenticate
 from django.views.generic import View
 from django.contrib.auth.models import User
-from .forms import LoginForm, MyRegistrationForm
+from .forms import LoginForm, MyRegistrationForm, UserForm
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib import messages
 
@@ -43,7 +43,7 @@ class LoginView(FormView):
 
 class RegisterUser(CreateView):
     """
-    #Clase que gestiona el formulario registro de usuarios.
+    Clase que gestiona el formulario registro de usuarios.
     """
     model = User
     template_name = "usuarios/register.html"
@@ -88,3 +88,14 @@ class ListUsers(ListView):
     """
     model = User
     template_name = "usuarios/list_users.html"
+
+
+class EditUser(SuccessMessageMixin, UpdateView):
+    """
+    Clase que gestiona la actualización de los datos de un usuario del sistema.
+    """
+    model = User
+    template_name = "usuarios/edit_user.html"
+    form_class = UserForm
+    success_message = "¡Usuario actualizado!"
+    success_url = reverse_lazy('usuarios:list_users')

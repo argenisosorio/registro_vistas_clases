@@ -9,8 +9,11 @@
       <th>Primer nombre</th>
       <th>Primer apellido</th>
       <th>Correo electrónico</th>
+      <th>Fecha de registro</th>
+      <th>Último acceso</th>
       <th>¿Está activo?</th>
       <th>¿Es staff?</th>
+      <th>Acciones</th>
     </tr>
   </thead>
   <tbody>
@@ -20,16 +23,21 @@
       <td>{{ user.first_name }}</td>
       <td>{{ user.last_name }}</td>
       <td>{{ user.email }}</td>
-      {% if user.is_staff == True %}
-        <td>Sí</td>
-      {% else %}
-        <td>No</td>
-      {% endif %}
+      <td>{{ user.date_joined }}</td>
+      <td>{{ user.last_login }}</td>
       {% if user.is_active == True %}
         <td>Sí</td>
       {% else %}
         <td>No</td>
       {% endif %}
+      {% if user.is_staff == True %}
+        <td>Sí</td>
+      {% else %}
+        <td>No</td>
+      {% endif %}
+      <td>
+        <a href="{% url 'usuarios:edit_user' user.pk %}">editar</a>
+      </td>
     </tr>
     {% endfor %}
   </tbody>
