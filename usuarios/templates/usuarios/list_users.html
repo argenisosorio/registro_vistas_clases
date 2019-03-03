@@ -36,7 +36,7 @@
         <td>No</td>
       {% endif %}
       <td>
-        <a href="{% url 'usuarios:edit_user' user.pk %}">editar</a>
+        <a href="{% url 'usuarios:edit_user' user.pk %}" title="editar">editar</a> | <a href="{% url 'usuarios:delete_user' user.id %}" title="Borrar">borrar</a>
       </td>
     </tr>
     {% endfor %}

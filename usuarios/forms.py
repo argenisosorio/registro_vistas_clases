@@ -92,17 +92,17 @@ class UserForm(forms.ModelForm):
     first_name = forms.CharField(label='Primer nombre',widget=TextInput(attrs={
         'class':'form-control input-md',
         'style': 'min-width: 0; width: 25%; display: inline;',
-    }), required = True)
+    }), required = False)
 
     last_name = forms.CharField(label='Primer apellido',widget=TextInput(attrs={
         'class':'form-control input-md',
         'style': 'min-width: 0; width: 25%; display: inline;',
-    }), required = True)
+    }), required = False)
 
     email = forms.EmailField(label='Correo electrónico',widget=TextInput(attrs={
         'class':'form-control input-md',
         'style': 'min-width: 0; width: 25%; display: inline;',
-    }), required = True)
+    }), required = False)
 
     is_active = forms.BooleanField(label='¿Está activo?',widget=CheckboxInput(attrs={
     }), required = False)

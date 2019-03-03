@@ -4,7 +4,7 @@ from django.core.urlresolvers import reverse
 from django.views import generic
 from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render
-from django.views.generic import FormView, RedirectView, CreateView, UpdateView, ListView, TemplateView
+from django.views.generic import FormView, RedirectView, CreateView, UpdateView, ListView, TemplateView, DeleteView
 from django.core.urlresolvers import reverse_lazy
 from django.core.urlresolvers import reverse
 from .models import *
@@ -48,7 +48,7 @@ class RegisterUser(CreateView):
     model = User
     template_name = "usuarios/register.html"
     form_class = MyRegistrationForm
-    success_url = reverse_lazy('registro:consultar')
+    success_url = reverse_lazy('usuarios:list_users')
     success_message = "Se registró con éxito"
 
     def form_valid(self, form):
@@ -99,3 +99,38 @@ class EditUser(SuccessMessageMixin, UpdateView):
     form_class = UserForm
     success_message = "¡Usuario actualizado!"
     success_url = reverse_lazy('usuarios:list_users')
+
+
+class DeleteUser(SuccessMessageMixin, DeleteView):
+    """
+    Clase que permite borrar un usuario del sistema.
+    """
+    model = User
+    success_url = reverse_lazy('usuarios:list_users')
+    template_name = "usuarios/user_confirm_delete.html"
+    success_message = "Se elimino el usuario con éxito"
+
+    def delete(self, request, *args, **kwargs):
+        """
+        Método que envía el mensaje a la plantilla cuando se
+        borra un usuario del sistema.
+        """
+        messages.success(self.request, self.success_message)
+        return super(DeleteUser, self).delete(request, *args, **kwargs)
+
+    def get(self, request, *args, **kwargs):
+        """
+        Método que redirecciona a index si el usuario
+        que intenta borrar el usuario del sistema no está activo.
+        """
+        self.object = self.get_object()
+        context = self.get_context_data(object=self.object)
+        self.object = self.get_object()
+        if request.user.is_active:
+            return self.render_to_response(context)
+        else:
+            if str(self.object) == str(self.request.user):
+                return self.render_to_response(context)
+            else:
+                messages_alert = ['No tiene permisos para borrar el usuario del sistema']
+                return render_to_response("inicio/index.html",{'messages_alert': messages_alert}, context_instance=RequestContext(request))
