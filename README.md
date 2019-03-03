@@ -80,3 +80,10 @@ dependiente de otros campos.
 En esta rama encontraremos un ejemplo
 de creación de cuentas de usuarios
 del sistema.
+
+## Rama type_users
+
+En esta rama encontraremos un ejemplo
+de creación de cuentas de usuarios
+del sistema y jugamos con los tipos
+de usuarios y el last_name.
