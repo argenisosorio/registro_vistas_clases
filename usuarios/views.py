@@ -62,8 +62,10 @@ class RegisterUser(CreateView):
         self.object.last_name = form.cleaned_data['last_name']
         self.object.password1 = form.cleaned_data['password1']
         self.object.password2 = form.cleaned_data['password2']
-        self.object.is_staff = form.cleaned_data['is_staff']
-        self.object.is_active = form.cleaned_data['is_active']
+        #self.object.is_staff = form.cleaned_data['is_staff']
+        #self.object.is_active = form.cleaned_data['is_active']
+        self.object.is_active = 1
+        self.object.is_staff = 0
         self.object.save()
         messages.success(self.request, self.success_message)
         return super(RegisterUser, self).form_valid(form)

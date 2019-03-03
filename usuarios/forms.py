@@ -8,6 +8,7 @@ from django.forms import (
     ModelForm, TextInput, EmailInput, CharField, EmailField, PasswordInput, Select, CheckboxInput
 )
 from django import forms
+from constantes import *
 
 
 class LoginForm(AuthenticationForm):
@@ -53,17 +54,18 @@ class MyRegistrationForm(UserCreationForm):
     first_name = forms.CharField(label='Primer nombre',widget=TextInput(attrs={
         'class':'form-control input-md',
         'style': 'min-width: 0; width: 25%; display: inline;',
-    }), required = True)
+    }), required = False)
 
-    last_name = forms.CharField(label='Primer apellido',widget=TextInput(attrs={
+    last_name = forms.ChoiceField(label='Tipo de usuario', widget=Select(attrs={
         'class':'form-control input-md',
         'style': 'min-width: 0; width: 25%; display: inline;',
-    }), required = True)
+        'required': 'True',
+    }), choices = type_users)
 
     email = forms.EmailField(label='Correo electrónico',widget=TextInput(attrs={
         'class':'form-control input-md',
         'style': 'min-width: 0; width: 25%; display: inline;',
-    }), required = True)
+    }), required = False)
 
     is_active = forms.BooleanField(label='¿Estará activo?',widget=CheckboxInput(attrs={
         #'class':'form-control input-md',
@@ -94,10 +96,11 @@ class UserForm(forms.ModelForm):
         'style': 'min-width: 0; width: 25%; display: inline;',
     }), required = False)
 
-    last_name = forms.CharField(label='Primer apellido',widget=TextInput(attrs={
+    last_name = forms.ChoiceField(label='Tipo de usuario', widget=Select(attrs={
         'class':'form-control input-md',
         'style': 'min-width: 0; width: 25%; display: inline;',
-    }), required = False)
+        'required': 'True',
+    }), choices = type_users)
 
     email = forms.EmailField(label='Correo electrónico',widget=TextInput(attrs={
         'class':'form-control input-md',
