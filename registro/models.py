@@ -6,6 +6,7 @@ from django.core.urlresolvers import reverse
 class Persona(models.Model):
     nombre = models.CharField(max_length=200)
     cedula = models.CharField(max_length=8)
+    imagen = models.FileField(upload_to='', blank=False, null=False)
 
     def __unicode__(self):
         return self.nombre

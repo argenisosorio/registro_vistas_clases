@@ -2,12 +2,37 @@
 {% block titulo %}Lista{% endblock %}
 {% block cuerpo %}
 <h1>Personas</h1>
-<ul>
-  {% for persona in object_list %}
-  <li>{{ persona.nombre }} {{ persona.cedula }}
-  <a href="{% url 'registro:editar' persona.id %}">editar</a>
-  <a href="{% url 'registro:borrar' persona.id %}">borrar</a>
-  </li>
+<table class="table table-striped" border="1px">
+  <thead>
+    <tr>
+      <th><b>Nombre</b></th>
+      <th><b>Cédula</b></th>
+      <th><b>Imagen</b></th>
+      <th><b>Acciones</b></th>
+    </tr>
+  </thead>
+  {% for x in object_list %}
+  <tbody>
+    <tr>
+      <td>
+        {{ x.nombre }}
+      </td>
+      <td>
+        {{ x.cedula }}
+      </td>
+      <td>
+        <img src="media/{{ x.imagen }}" width="100px">
+      </td>
+      <td>
+        <a href="{% url 'registro:editar' x.id %}">
+          <button class="btn btn-primary">Editar</button>
+        </a>
+        <a href="{% url 'registro:borrar' x.id %}">
+          <button class="btn btn-danger">Borrar</button>
+        </a>
+      </td>
+    </tr>
+  </tbody>
   {% endfor %}
-</ul>
+</table>
 {% endblock %}

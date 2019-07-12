@@ -12,13 +12,13 @@ class Consultar(ListView):
 
 class Registrar(CreateView):
     model = Persona
-    fields = ['nombre', 'cedula']
+    fields = ['nombre','cedula','imagen']
     success_url = reverse_lazy('registro:consultar')
 
 
 class Editar(UpdateView):
     model = Persona
-    fields = ['nombre', 'cedula']
+    fields = ['nombre','cedula','imagen']
     success_url = reverse_lazy('registro:consultar')
 
 
