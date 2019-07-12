@@ -87,3 +87,10 @@ En esta rama encontraremos un ejemplo
 de creación de cuentas de usuarios
 del sistema y jugamos con los tipos
 de usuarios y el last_name.
+
+## Rama profile_photo
+
+En esta rama encontraremos un ejemplo
+de creación de como subir y mostrar
+una imagen de perfil de una persona
+que se registre en el sistema.
