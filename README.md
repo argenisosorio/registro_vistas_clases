@@ -94,3 +94,10 @@ En esta rama encontraremos un ejemplo
 de creación de como subir y mostrar
 una imagen de perfil de una persona
 que se registre en el sistema.
+
+## Rama insert_data_csv
+
+En esta rama encontraremos un ejemplo
+de como subir un fichero .csv al
+servidor e insertar la data del fichero
+en la base de datos.
