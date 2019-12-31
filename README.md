@@ -75,6 +75,12 @@ En esta rama encontraremos un ejemplo
 de campos de selección de formularios que se cargan de datos
 dependiente de otros campos.
 
+## Rama selects2
+
+En esta rama encontraremos otro ejemplo
+de campos de selección de formularios que se cargan de datos
+dependiente de otros campos.
+
 ## Rama create_acount
 
 En esta rama encontraremos un ejemplo
