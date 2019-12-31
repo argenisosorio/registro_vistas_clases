@@ -1,0 +1,13 @@
+{% extends "registro/base.html" %}
+{% block titulo %}Lista{% endblock %}
+{% block cuerpo %}
+<h1>Proyectos</h1>
+<ul>
+  {% for x in object_list %}
+  <li>{{ x.nombre_proyecto }} {{ x.direccion }} {{ x.director }}
+    <a href="{% url 'registro:editar' x.id %}">editar</a> |
+    <a href="{% url 'registro:borrar' x.id %}">borrar</a>
+  </li>
+  {% endfor %}
+</ul>
+{% endblock %}

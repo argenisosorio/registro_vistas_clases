@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.contrib import admin
-from registro.models import Estado, Municipio, Parroquia, Persona
+from registro.models import Direccion, Director, Proyecto
 
-admin.site.register(Estado)
-admin.site.register(Municipio)
-admin.site.register(Parroquia)
-admin.site.register(Persona)
+admin.site.register(Direccion)
+admin.site.register(Director)
+admin.site.register(Proyecto)
