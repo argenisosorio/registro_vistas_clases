@@ -1,13 +1,22 @@
 {% extends "registro/base.html" %}
 {% block titulo %}Lista{% endblock %}
 {% block cuerpo %}
-<h1>Personas</h1>
+<h1>Lista de personas</h1>
+<br />
+<a href="{% url 'registro:registrar' %}">
+  <button class="btn btn-success">NUEVA</button>
+</a>
+<br />
+<br />
 <ul>
   {% for persona in object_list %}
   <li>{{ persona.nombre }} {{ persona.cedula }}
-  <a href="{% url 'registro:editar' persona.id %}">editar</a>
-  <a href="{% url 'registro:borrar' persona.id %}">borrar</a>
-  </li>
+  <a href="{% url 'registro:editar' persona.id %}">
+    <button class="btn btn-info">EDITAR</button>
+  </a>
+  <a href="{% url 'registro:borrar' persona.id %}">
+    <button class="btn btn-danger">BORRAR</button>
+  </a>
   {% endfor %}
 </ul>
 {% endblock %}

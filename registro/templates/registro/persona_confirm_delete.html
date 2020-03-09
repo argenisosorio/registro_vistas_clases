@@ -2,7 +2,7 @@
 {% block titulo %}Borrar{% endblock %}
 {% block cuerpo %}
 <form method="post">{% csrf_token %}
-  Are you sure you want to delete "{{ object }}" ?
-  <input type="submit" value="Submit" />
+  ¿Está seguro que desea borrar a "{{ object }}" ?
+  <button class="btn btn-danger" type="submit">BORRAR</button>
 </form>
 {% endblock %}
