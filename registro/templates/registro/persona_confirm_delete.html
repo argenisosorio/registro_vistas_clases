@@ -1,6 +1,8 @@
 {% extends "registro/base.html" %}
 {% block titulo %}Borrar{% endblock %}
 {% block cuerpo %}
+<h1>Borrar persona</h1>
+<br />
 <form method="post">{% csrf_token %}
   ¿Está seguro que desea borrar a "{{ object }}" ?
   <button class="btn btn-danger" type="submit">BORRAR</button>

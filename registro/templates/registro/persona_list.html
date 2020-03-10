@@ -4,19 +4,39 @@
 <h1>Lista de personas</h1>
 <br />
 <a href="{% url 'registro:registrar' %}">
-  <button class="btn btn-success">NUEVA</button>
+  <button class="btn btn-success">NUEVO</button>
 </a>
+{% if object_list %}
 <br />
 <br />
-<ul>
+<table border="1px" cellpadding="5px" cellspacing="5px" style="width:100%">
+  <thead>
+    <tr>
+      <th class="text-center">#</th>
+      <th class="text-center">Nombre</th>
+      <th class="text-center">Cédula</th>
+      <th class="text-center">Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
   {% for persona in object_list %}
-  <li>{{ persona.nombre }} {{ persona.cedula }}
-  <a href="{% url 'registro:editar' persona.id %}">
-    <button class="btn btn-info">EDITAR</button>
-  </a>
-  <a href="{% url 'registro:borrar' persona.id %}">
-    <button class="btn btn-danger">BORRAR</button>
-  </a>
+  <tr>
+    <td class="text-center">{{ persona.id }}</td>
+    <td class="text-center">{{ persona.nombre }}</td>
+    <td class="text-center">{{ persona.cedula }}</td>
+    <td class="text-center">
+      <a href="{% url 'registro:editar' persona.id %}">
+        <button class="btn btn-info">EDITAR</button>
+      </a>
+      <a href="{% url 'registro:borrar' persona.id %}">
+        <button class="btn btn-danger">BORRAR</button>
+      </a>
+    </td>
+  </tr>
   {% endfor %}
-</ul>
+  </tbody>
+</table>
+{% else %}
+<h3>No hay personas registradas</h3>
+{% endif %}
 {% endblock %}
