@@ -27,8 +27,8 @@
       <a href="{% url 'registro:editar' persona.id %}">
         <button class="btn btn-info">EDITAR</button>
       </a>
-      <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal">BORRAR</button>
-      <div class="modal fade" id="myModal" role="dialog">
+      <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal{{ persona.id }}">BORRAR</button>
+      <div class="modal fade" id="myModal{{ persona.id }}" role="dialog">
         <div class="modal-dialog modal-md">
           <div class="modal-content">
             <div class="modal-header">
