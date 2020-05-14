@@ -107,3 +107,9 @@ En esta rama encontraremos un ejemplo
 de como subir un fichero .csv al
 servidor e insertar la data del fichero
 en la base de datos.
+
+## Rama modal_borrar_registro
+
+En esta rama encontraremos un ejemplo
+de como borrar un registro usando
+un modal de bootstrap.
