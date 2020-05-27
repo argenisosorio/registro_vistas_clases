@@ -1,6 +1,24 @@
 {% extends "registro/base.html" %}
 {% block titulo %}Lista{% endblock %}
 {% block cuerpo %}
+<script type="text/javascript">
+// XMLHttpRequest sencilla, y recuperar datos de un archivo txt.
+function loadDoc() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("demo").innerHTML =
+      this.responseText;
+    }
+  };
+  xhttp.open("GET", "http://127.0.0.1:8000/media/holamundo.txt", true);
+  xhttp.send();
+}
+</script>
+<div id="demo">
+<h2>The XMLHttpRequest Object</h2>
+<button type="button" onclick="loadDoc()">Cambiar contenido</button>
+</div>
 <h1>Lista de personas</h1>
 <br />
 <a href="{% url 'registro:registrar' %}">
