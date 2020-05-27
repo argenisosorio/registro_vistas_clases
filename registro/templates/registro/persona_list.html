@@ -27,9 +27,9 @@
       <a href="{% url 'registro:editar' persona.id %}">
         <button class="btn btn-info">EDITAR</button>
       </a>
-      <form action="{% url 'registro:borrar' persona.id %}" method="post">{% csrf_token %}
-        <button class="btn btn-danger" onclick="return confirm('¿Está seguro que desea borrar el registro?');">BORRAR</button>
-      </form>
+      <a href="{% url 'registro:borrar' persona.id %}">
+        <button class="btn btn-danger">BORRAR</button>
+      </a>
     </td>
   </tr>
   {% endfor %}
