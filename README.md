@@ -113,3 +113,9 @@ en la base de datos.
 En esta rama encontraremos un ejemplo
 de como borrar un registro usando
 un modal de bootstrap.
+
+## Rama XMLHttpRequest
+
+En esta rama encontraremos un ejemplo
+de XMLHttpRequest para recuperar datos
+de un archivo txt y cargarlos en el dom.
