@@ -1,8 +1,39 @@
 {% extends "registro/base.html" %}
 {% block titulo %}Registrar{% endblock %}
 {% block cuerpo %}
-<form method="post">{% csrf_token %}
+<form method="post" id="id_contact_form" data-post-url="{% url 'registro:registrar' %}">{% csrf_token %}
   {{ form.as_p }}
   <button class="btn btn-success" type="submit">GUARDAR</button>
 </form>
+<script type="text/javascript">
+$(function() {
+  'use strict';
+  $('#id_contact_form').on('submit', function() {
+    var post_url = $("#id_contact_form").data("post-url");
+    var formData = new FormData(this);
+    $.ajax({
+      url : post_url,
+      type: "POST",
+      data : formData,
+      processData: false,
+      contentType: false,
+      success:function(response){
+        alert("Se registro correctamente");
+        //var message = response.content.message
+        //alert(message);
+      },
+    });
+    return false;
+  });
+});
+/*
+$(function() {
+  'use strict';
+  $('#id_contact_form').on('submit', function() {
+    alert("ENVIADO");
+    return false;
+  });
+});
+*/
+</script>
 {% endblock %}
