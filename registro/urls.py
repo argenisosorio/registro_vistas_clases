@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.conf.urls import patterns, url
 from registro import views
+from registro.views import *
 from django.conf import settings
 
 
@@ -13,4 +14,5 @@ urlpatterns = patterns('',
     url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {
         'document_root': settings.MEDIA_ROOT,
     }),
+    url(r'^datos$', views.datos, name='datos'),
 )
