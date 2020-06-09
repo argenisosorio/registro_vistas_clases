@@ -107,3 +107,22 @@ En esta rama encontraremos un ejemplo
 de como subir un fichero .csv al
 servidor e insertar la data del fichero
 en la base de datos.
+
+## Rama modal_borrar_registro
+
+En esta rama encontraremos un ejemplo
+de como borrar un registro usando
+un modal de bootstrap.
+
+## Rama bootstrap_modal
+
+En esta rama encontraremos un ejemplo
+de como borrar un registro usando
+un modal de bootstrap y también
+un modal para el formulario de registro.
+
+## Rama XMLHttpRequest
+
+En esta rama encontraremos un ejemplo
+de XMLHttpRequest para recuperar datos
+de un archivo txt y cargarlos en el dom.
