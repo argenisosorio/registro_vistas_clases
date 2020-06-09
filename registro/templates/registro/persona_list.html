@@ -3,16 +3,16 @@
 {% block cuerpo %}
 <h1>Lista de personas</h1>
 <br />
-<a href="{% url 'registro:registrar' %}">
-  <button class="btn btn-success">NUEVO</button>
-</a>
-{% if object_list %}
+<!--a href="{% url 'registro:registrar' %}">
+  <button class="btn btn-success">NUEVA</button>
+</a-->
+<button class="btn btn-success" data-toggle="modal" data-target="#modal-registrar">REGISTRAR</button>
 <br />
 <br />
-<table border="1px" cellpadding="5px" cellspacing="5px" style="width:100%">
+<table border="1px" id="example" class="display" cellspacing="0px" style="width:100%;">
   <thead>
     <tr>
-      <th class="text-center">#</th>
+      <th class="text-center">ID</th>
       <th class="text-center">Nombre</th>
       <th class="text-center">Cédula</th>
       <th class="text-center">Acciones</th>
@@ -28,15 +28,58 @@
       <a href="{% url 'registro:editar' persona.id %}">
         <button class="btn btn-info">EDITAR</button>
       </a>
-      <a href="{% url 'registro:borrar' persona.id %}">
-        <button class="btn btn-danger">BORRAR</button>
-      </a>
+      <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal{{ persona.id }}">BORRAR</button>
+      <div class="modal fade" id="myModal{{ persona.id }}" role="dialog">
+        <div class="modal-dialog modal-md">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Borrar registro</h4>
+            </div>
+            <div class="modal-body">
+              <form action="{% url 'registro:borrar' persona.id %}" method="post">{% csrf_token %}
+                ¿Está seguro que desea borrar a "{{ persona.nombre }}"?
+                <br><br>
+                <button type="button" class="btn btn-default" data-dismiss="modal">CANCELAR</button>
+                <button class="btn btn-danger" type="submit">BORRAR</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
     </td>
   </tr>
   {% endfor %}
   </tbody>
 </table>
-{% else %}
-<h3>No hay personas registradas</h3>
-{% endif %}
+<!-- Modal con el formulario de registro de usuarios-->
+<div class="modal fade" id="modal-registrar" role="dialog">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h1 class="modal-title">Registrar persona</h1>
+      </div>
+      <div class="modal-body">
+      <form action="{% url 'registro:registrar' %}" method="post">{% csrf_token %}
+        <p>
+          <label>Nombre:</label>
+          <input id="id_nombre" maxlength="200" name="nombre" type="text" />
+        </p>
+        <p>
+          <label for="id_cedula">Cedula:</label>
+          <input id="id_cedula" maxlength="8" name="cedula" type="text" />
+        </p>
+        <button type="button" class="btn btn-default" data-dismiss="modal">CANCELAR</button>
+        <button class="btn btn-success" type="submit">REGISTRAR</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function() {
+  $('[data-toggle="tooltip"]').tooltip();
+});
+</script>
 {% endblock %}
