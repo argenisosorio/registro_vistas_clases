@@ -116,10 +116,8 @@ un modal de bootstrap.
 
 ## Rama bootstrap_modal
 
-En esta rama encontraremos un ejemplo
-de como borrar un registro usando
-un modal de bootstrap y también
-un modal para el formulario de registro.
+Encontraremos un ejemplo de 
+CRUD con Bootstrap modals.
 
 ## Rama XMLHttpRequest
 
