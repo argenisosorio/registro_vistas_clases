@@ -20,6 +20,7 @@ class Registrar(CreateView):
 
 
 class Editar(UpdateView):
+    template_name = "registro/persona_form_update.html"
     model = Persona
     fields = ['nombre', 'cedula']
     success_url = reverse_lazy('registro:consultar')

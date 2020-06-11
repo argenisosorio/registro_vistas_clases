@@ -3,9 +3,6 @@
 {% block cuerpo %}
 <h1>Lista de personas</h1>
 <br />
-<!--a href="{% url 'registro:registrar' %}">
-  <button class="btn btn-success">NUEVA</button>
-</a-->
 <button class="btn btn-success" data-toggle="modal" data-target="#modal-registrar">REGISTRAR</button>
 <br />
 <br />
@@ -28,7 +25,11 @@
       <a href="{% url 'registro:editar' persona.id %}">
         <button class="btn btn-info">EDITAR</button>
       </a>
+      <!--a data-toggle="modal" href="{% url 'registro:editar' persona.id %}" data-target="#modal-registrar">
+        <button class="btn btn-info">EDITAR</button>
+      </a-->
       <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal{{ persona.id }}">BORRAR</button>
+      <!-- Modal con el formulario para borrar un registro -->
       <div class="modal fade" id="myModal{{ persona.id }}" role="dialog">
         <div class="modal-dialog modal-md">
           <div class="modal-content">
@@ -52,7 +53,7 @@
   {% endfor %}
   </tbody>
 </table>
-<!-- Modal con el formulario de registro de usuarios-->
+<!-- Modal con el formulario de registro de personas -->
 <div class="modal fade" id="modal-registrar" role="dialog">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
@@ -64,12 +65,13 @@
       <form action="{% url 'registro:registrar' %}" method="post">{% csrf_token %}
         <p>
           <label>Nombre:</label>
-          <input id="id_nombre" maxlength="200" name="nombre" type="text" />
+          <input class="form form-control" id="id_nombre" maxlength="200" name="nombre" type="text" required="required" />
         </p>
         <p>
           <label for="id_cedula">Cedula:</label>
-          <input id="id_cedula" maxlength="8" name="cedula" type="text" />
+          <input class="form form-control" id="id_cedula" maxlength="8" name="cedula" type="text" required="required" />
         </p>
+        <br />
         <button type="button" class="btn btn-default" data-dismiss="modal">CANCELAR</button>
         <button class="btn btn-success" type="submit">REGISTRAR</button>
         </form>
