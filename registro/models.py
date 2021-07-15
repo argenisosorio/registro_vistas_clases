@@ -3,12 +3,16 @@ from django.db import models
 from django.core.urlresolvers import reverse
 
 
-class Persona(models.Model):
-    nombre = models.CharField(max_length=200)
-    cedula = models.CharField(max_length=8)
+class Country(models.Model):
+    name = models.CharField(max_length=50)
 
     def __unicode__(self):
-        return self.nombre
+        return self.name
 
-    def get_absolute_url(self):
-        return reverse('registro:editar', kwargs={'pk': self.pk})
+
+class City(models.Model):
+    name = models.CharField(max_length=50)
+    country = models.ForeignKey(Country)
+
+    def __unicode__(self):
+        return self.name

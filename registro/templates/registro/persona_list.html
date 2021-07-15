@@ -1,38 +1,28 @@
 {% extends "registro/base.html" %}
 {% block titulo %}Lista{% endblock %}
 {% block cuerpo %}
-<h1>Lista de personas</h1>
-<br />
-<a href="{% url 'registro:registrar' %}">
-  <button class="btn btn-success">NUEVA</button>
-</a>
-<br />
-<br />
-<table border="1px" id="example" class="display" cellspacing="0px" style="width:100%;">
-  <thead>
-    <tr>
-      <th class="text-center">ID</th>
-      <th class="text-center">Nombre</th>
-      <th class="text-center">Cédula</th>
-      <th class="text-center">Acciones</th>
-    </tr>
-  </thead>
-  <tbody>
-  {% for persona in object_list %}
-  <tr>
-    <td class="text-center">{{ persona.id }}</td>
-    <td class="text-center">{{ persona.nombre }}</td>
-    <td class="text-center">{{ persona.cedula }}</td>
-    <td class="text-center">
-      <a href="{% url 'registro:editar' persona.id %}">
-        <button class="btn btn-info">EDITAR</button>
-      </a>
-      <a href="{% url 'registro:borrar' persona.id %}">
-        <button class="btn btn-danger">BORRAR</button>
-      </a>
-    </td>
-  </tr>
-  {% endfor %}
-  </tbody>
-</table>
+<script>
+$(document).ready(function(){
+  $('select#selectcountries').change(function () {
+    var optionSelected = $(this).find("option:selected");
+    var valueSelected  = optionSelected.val();
+    var country_name   = optionSelected.text();
+    data = {'cnt' : country_name };
+    ajax('/getdetails',data,function(result){
+      console.log(result);
+      $("#selectcities option").remove();
+      for (var i = result.length - 1; i >= 0; i--) {
+        $("#selectcities").append('<option>'+ result[i].name +'</option>');
+      };
+    });
+  });
+});
+</script>
+<select name="selectcountries" id="selectcountries">
+{% for item in object_list %}
+  <option val="{{ item.name }}"> {{ item.name }} </option>
+{% endfor %}
+</select>
+
+<select name ="selectcities" id="selectcities"></select>
 {% endblock %}
