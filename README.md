@@ -124,3 +124,9 @@ CRUD con Bootstrap modals.
 En esta rama encontraremos un ejemplo
 de XMLHttpRequest para recuperar datos
 de un archivo txt y cargarlos en el dom.
+
+## Rama selects_depend
+
+En esta rama encontraremos otro ejemplo
+de campos de selección de formularios que se cargan de datos
+dependiente de otros campos.
