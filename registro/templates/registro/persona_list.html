@@ -1,28 +1,22 @@
 {% extends "registro/base.html" %}
 {% block titulo %}Lista{% endblock %}
 {% block cuerpo %}
-<script>
-$(document).ready(function(){
-  $('select#selectcountries').change(function () {
-    var optionSelected = $(this).find("option:selected");
-    var valueSelected  = optionSelected.val();
-    var country_name   = optionSelected.text();
-    data = {'cnt' : country_name };
-    ajax('/getdetails',data,function(result){
-      console.log(result);
-      $("#selectcities option").remove();
-      for (var i = result.length - 1; i >= 0; i--) {
-        $("#selectcities").append('<option>'+ result[i].name +'</option>');
-      };
-    });
-  });
-});
-</script>
-<select name="selectcountries" id="selectcountries">
-{% for item in object_list %}
-  <option val="{{ item.name }}"> {{ item.name }} </option>
-{% endfor %}
+<select id="id_country" name="country">
+  <option value="" selected="selected">---------</option>
+  {% for item in object_list %}
+    <option value="{{ item.id }}">{{ item.name }}</option>
+  {% endfor %}
 </select>
 
-<select name ="selectcities" id="selectcities"></select>
+<select id="id_city" name="city">
+  <option value="" selected="selected">---------</option>
+  {% for item in cities %}
+    <option value="{{ item.id }}" class="{{ item.country.id }}">{{ item.name }}</option>
+  {% endfor %}
+</select>
+<script>
+$(document).ready(function() {
+  $("#id_city").chained("#id_country");
+});
+</script>
 {% endblock %}

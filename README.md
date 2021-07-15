@@ -130,3 +130,9 @@ de un archivo txt y cargarlos en el dom.
 En esta rama encontraremos otro ejemplo
 de campos de selección de formularios que se cargan de datos
 dependiente de otros campos.
+
+## Rama chained-selects-example
+
+En esta rama encontraremos otro ejemplo
+de campos de selección encadenados usando
+el plugin de javascript chained-selects-example.
